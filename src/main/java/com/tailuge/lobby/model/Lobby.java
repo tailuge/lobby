@@ -4,13 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,6 +19,9 @@ public class Lobby {
     @GeneratedValue
     private Long id;
     String name;
+    @Getter
+    @Setter(AccessLevel.NONE)
     @OneToMany
-    List<Player> players = new ArrayList<>();
+    final Set<Player> players = new HashSet<>();
+
 }

@@ -1,21 +1,28 @@
 package com.tailuge.lobby.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Player {
+public class Table {
     @Id
     @GeneratedValue
     private Long id;
     String name;
+
+    @OneToMany
+    final Set<Player> players = new HashSet<>();
+
+    @OneToOne
+    private Lobby lobby;
 }

@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine
+FROM  openjdk:17-alpine
 EXPOSE 8080
 
 COPY target/*.jar spring-action.jar

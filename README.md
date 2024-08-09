@@ -1,6 +1,6 @@
 # Lobby
 
-Players join the Lobby to create a game and await pairing.
+Players join the Lobby to create a Game and await pairing.
 
 ### Reference Documentation
 

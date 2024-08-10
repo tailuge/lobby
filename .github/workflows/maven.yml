@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Debug env
-        run: ls -lart
+        run: ls -lart ./
       - name: Debug docker env
         run: docker images
       - name: Tag Docker Image

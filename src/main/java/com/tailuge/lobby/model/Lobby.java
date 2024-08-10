@@ -1,9 +1,6 @@
 package com.tailuge.lobby.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
@@ -21,7 +18,7 @@ public class Lobby {
     String name;
     @Getter
     @Setter(AccessLevel.NONE)
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     final Set<Player> players = new HashSet<>();
 
 }

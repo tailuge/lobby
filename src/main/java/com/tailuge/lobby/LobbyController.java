@@ -2,6 +2,7 @@ package com.tailuge.lobby;
 
 import com.tailuge.lobby.model.Lobby;
 import com.tailuge.lobby.model.Player;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
@@ -25,11 +26,13 @@ public class LobbyController {
         this.playerRepository = playerRepository;
     }
 
+    @Transactional
     @PostMapping("/{lobbyId}/players/{playerId}")
     public Lobby addPlayer(@PathVariable Long lobbyId, @PathVariable Long playerId) {
         Lobby lobby = lobbyRepository.findById(lobbyId).orElseThrow(() -> new ResourceNotFoundException("Lobby not found"));
         Player player = playerRepository.findById(playerId).orElseThrow(() -> new ResourceNotFoundException("Player not found"));
         log.info("Adding player {}:{} to lobby {}:{}", playerId, player.getName(), lobbyId, lobby.getName());
-        return Lobby.builder().build();
+        lobby.getPlayers().add(player);
+        return lobby;
     }
 }

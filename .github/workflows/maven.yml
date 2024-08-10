@@ -44,9 +44,9 @@ jobs:
         run: docker tag lobby:0.0.1-SNAPSHOT ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
       - name: Push graalvm native Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: tailuge/render:latest
+#      - name: Build and push
+#        uses: docker/build-push-action@v6
+#        with:
+#          context: .
+#          push: true
+#          tags: tailuge/render:latest

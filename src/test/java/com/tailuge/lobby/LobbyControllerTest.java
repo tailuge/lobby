@@ -34,9 +34,9 @@ class LobbyControllerTest {
         lobbyRepository.save(new Lobby(1L, "lobby1"));
         lobbyController.addPlayer(1L, 1L);
         Optional<Lobby> a = lobbyRepository.findById(1L);
-        assertThat(a).isPresent().hasValueSatisfying(s -> {
-            assertThat(s.getPlayers()).hasSize(1);
-        });
+        assertThat(a).isPresent()
+                     .hasValueSatisfying(s ->
+                             assertThat(s.getPlayers()).hasSize(1));
     }
 
 }

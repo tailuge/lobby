@@ -17,4 +17,4 @@ jobs:
           java --version
           native-image --version
       - name: Example step using Maven plugin  # https://graalvm.github.io/native-build-tools/latest/maven-plugin.html
-        run: mvn native:compile-no-fork -Dmaven.test.skip=true
+        run: mvn native:compile-no-fork -Dmaven.test.skip=true -DmainClass=com.tailuge.lobby.LobbyApplication

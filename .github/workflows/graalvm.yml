@@ -16,5 +16,6 @@ jobs:
           echo "JAVA_HOME: $JAVA_HOME"
           java --version
           native-image --version
+          ls -lart
       - name: Example step using Maven plugin  # https://graalvm.github.io/native-build-tools/latest/maven-plugin.html
-        run: mvn native:compile-no-fork -Dmaven.test.skip=true -DmainClass=com.tailuge.lobby.LobbyApplication
+        run: mvn -e native:compile-no-fork -Dmaven.test.skip=true -DmainClass=com.tailuge.lobby.LobbyApplication

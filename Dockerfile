@@ -1,5 +1,6 @@
-FROM  openjdk:17-alpine
+FROM container-registry.oracle.com/os/oraclelinux:8-slim
+
 EXPOSE 8080
 
-COPY target/*.jar spring-action.jar
-ENTRYPOINT ["java","-jar","/spring-action.jar"]
+COPY target/lobby lobby
+ENTRYPOINT ["/lobby"]

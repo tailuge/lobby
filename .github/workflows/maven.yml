@@ -40,12 +40,12 @@ jobs:
         run: ls -lart ./target
       - name: Create docker image for arm64
         run: docker build -f Dockerfile.arm64 -t lobby-jre:latest .
-      - name: debug  
-        run: docker images
-      - name: Tag Docker Image
-        run: docker tag lobby-jre:latest ${{ secrets.DOCKER_USERNAME }}/lobby-jre:latest
-      - name: debug  
-        run: docker images
+#      - name: debug  
+#        run: docker images
+#      - name: Tag Docker Image
+#        run: docker tag lobby-jre:latest ${{ secrets.DOCKER_USERNAME }}/lobby-jre:latest
+#      - name: debug  
+#        run: docker images
 #      - name: Push graalvm native Docker Image
 #        run: docker push ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
       - name: Build and push
@@ -54,6 +54,7 @@ jobs:
           context: .
           file: Dockerfile.arm64
           push: true
+          platform: linux/arm64
           tags: tailuge/lobby-jre:latest
       - name: debug after
         run: docker images

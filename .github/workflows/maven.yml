@@ -54,7 +54,7 @@ jobs:
           context: .
           file: Dockerfile.arm64
           push: true
-          platform: linux/arm64
+          platforms: linux/arm64
           tags: tailuge/lobby-jre:latest
       - name: debug after
         run: docker images

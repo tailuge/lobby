@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Java maven build with docker arm64 image
 
 on:
   push:
@@ -52,6 +52,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          build: false
+          file: Dockerfile.arm64
           push: true
           tags: tailuge/lobby-jre:latest
+      - name: debug after
+        run: docker images
+  

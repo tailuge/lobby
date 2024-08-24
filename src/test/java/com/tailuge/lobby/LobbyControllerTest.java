@@ -20,6 +20,7 @@ class LobbyControllerTest {
 
     @Autowired
     PlayerRepository playerRepository;
+    
     @Autowired
     private LobbyRepository lobbyRepository;
 

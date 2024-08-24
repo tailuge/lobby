@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Slf4j
 @EnableHypermediaSupport(type = {EnableHypermediaSupport.HypermediaType.HAL})
@@ -34,5 +37,11 @@ public class LobbyController {
         log.info("Adding player {}:{} to lobby {}:{}", playerId, player.getName(), lobbyId, lobby.getName());
         lobby.getPlayers().add(player);
         return lobby;
+    }@GetMapping("")
+    public String getLobies(@RequestParam String param) {
+        return "lobbies:";
     }
+    
+
+
 }

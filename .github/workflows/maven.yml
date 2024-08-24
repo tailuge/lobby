@@ -26,7 +26,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: mvn -B spring-boot:build-image --file pom.xml
+        run: mvn -B install --file pom.xml
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -36,17 +36,22 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Debug env
-        run: ls -lart ./
-      - name: Debug docker env
+      - name: produced JAR in ./target 
+        run: ls -lart ./target
+      - name: Create docker image for arm64
+        run: docker build -f Dockerfile.arm64 -t lobby-jre:latest .
+      - name: debug  
         run: docker images
       - name: Tag Docker Image
-        run: docker tag lobby:0.0.1-SNAPSHOT ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
-      - name: Push graalvm native Docker Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
-#      - name: Build and push
-#        uses: docker/build-push-action@v6
-#        with:
-#          context: .
-#          push: true
-#          tags: tailuge/render:latest
+        run: docker tag lobby-jre:latest ${{ secrets.DOCKER_USERNAME }}/lobby-jre:latest
+      - name: debug  
+        run: docker images
+#      - name: Push graalvm native Docker Image
+#        run: docker push ${{ secrets.DOCKER_USERNAME }}/lobby:0.0.1-SNAPSHOT
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          build: false
+          push: true
+          tags: tailuge/lobby-jre:latest

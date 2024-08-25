@@ -1,4 +1,4 @@
-package com.tailuge.lobby;
+package com.tailuge.lobby.repository;
 
 import com.tailuge.lobby.model.Player;
 import org.springframework.data.repository.CrudRepository;

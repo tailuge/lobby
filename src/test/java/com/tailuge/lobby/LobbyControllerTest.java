@@ -1,7 +1,11 @@
 package com.tailuge.lobby;
 
+import com.tailuge.lobby.controller.LobbyController;
 import com.tailuge.lobby.model.Lobby;
 import com.tailuge.lobby.model.Player;
+import com.tailuge.lobby.repository.LobbyRepository;
+import com.tailuge.lobby.repository.PlayerRepository;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

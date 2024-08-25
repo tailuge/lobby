@@ -37,8 +37,10 @@ public class LobbyController {
         log.info("Adding player {}:{} to lobby {}:{}", playerId, player.getName(), lobbyId, lobby.getName());
         lobby.getPlayers().add(player);
         return lobby;
-    }@GetMapping("")
-    public String getLobies(@RequestParam String param) {
+    }
+    
+    @GetMapping("")
+    public String getLobies() {
         return "lobbies:";
     }
     
